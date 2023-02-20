@@ -1,6 +1,7 @@
 # Using proper node
 
 ### `nvm use`
+
 or just install node according to `.nvmrc`
 
 # Getting Started with Create React App

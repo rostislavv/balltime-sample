@@ -25,12 +25,12 @@ export function ActionsList() {
     useState<IActionWithId | null>(null);
 
   const handleOpen = (action: IActionWithId) => () => {
-    console.log('handleOpen', { action });
+    console.log("handleOpen", { action });
     setSelectedEditAction({ ...action });
     setEditActionModalOpen(true);
   };
   const handleClose = (editAction: IEditAction) => () => {
-    console.log('handleClose');
+    console.log("handleClose");
     editActionUtility(actions, editAction, setActions);
     setSelectedEditAction(null);
     setEditActionModalOpen(false);
@@ -78,28 +78,26 @@ export function ActionsList() {
             Game Actions
           </Typography>
 
-            <EditActionModal
-              open={openEditActionModal}
-              selectedEditAction={selectedEditAction}
-              playerNames={playerNames}
-              skillTypes={skillTypes}
-              handleClose={handleClose}
-            />
+          <EditActionModal
+            open={openEditActionModal}
+            selectedEditAction={selectedEditAction}
+            playerNames={playerNames}
+            skillTypes={skillTypes}
+            handleClose={handleClose}
+          />
           <Filters
             filters={filters}
             setFilters={setFilters}
             skillTypes={skillTypes}
           />
           {actions &&
-            filterActions(actions, filters).map(
-              (action, key) => (
-                <ActionBox
-                  key={key}
-                  action={action}
-                  editAction={handleOpen(action)}
-                />
-              )
-            )}
+            filterActions(actions, filters).map((action, key) => (
+              <ActionBox
+                key={key}
+                action={action}
+                editAction={handleOpen(action)}
+              />
+            ))}
         </>
       )}
     </>

@@ -35,65 +35,54 @@ export function EditActionModal({
   const [newPlayerName, setNewPlayerName] = useState<string>();
   const [newSkillType, setNewSkillType] = useState<string>();
   return (
-      <div>
-        <Modal
-          open={open}
-          onClose={handleClose({
-            actionId: selectedEditAction?.actionId,
-            newPlayerName,
-            newSkillType,
-          })}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Skill Type:
-            </Typography>
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose({
+          actionId: selectedEditAction?.actionId,
+          newPlayerName,
+          newSkillType,
+        })}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Skill Type:
+          </Typography>
 
-            <FormControl fullWidth>
-              <Select
-                name="new_skill_type"
-                onChange={(e) => setNewSkillType(e.target.value as string)}
-                value={newSkillType || selectedEditAction?.skill_type}
-              >
-                {skillTypes.map((skill: string, key: number) => (
-                    <MenuItem key={key} value={skill}>
-                      {skill}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
+          <FormControl fullWidth>
+            <Select
+              name="new_skill_type"
+              onChange={(e) => setNewSkillType(e.target.value as string)}
+              value={newSkillType || selectedEditAction?.skill_type}
             >
-              Player Name:
-            </Typography>
+              {skillTypes.map((skill: string, key: number) => (
+                <MenuItem key={key} value={skill}>
+                  {skill}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Player Name:
+          </Typography>
 
-            <FormControl fullWidth>
-              <Select
-                name="new_player_name"
-                onChange={(e) => setNewPlayerName(e.target.value as string)}
+          <FormControl fullWidth>
+            <Select
+              name="new_player_name"
+              onChange={(e) => setNewPlayerName(e.target.value as string)}
               value={newPlayerName || selectedEditAction?.player_name}
-              >
-                {playerNames.map((name: string, key: number) => (
-                    <MenuItem
-                      key={key}
-                      value={name}
-                    >
-                      {name}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-          </Box>
-        </Modal>
-      </div>
+            >
+              {playerNames.map((name: string, key: number) => (
+                <MenuItem key={key} value={name}>
+                  {name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+      </Modal>
+    </div>
   );
 }
